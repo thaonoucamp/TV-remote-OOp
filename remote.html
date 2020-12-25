@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="remote.js"></script>
+</head>
+<body>
+<script>
+    class Tivi {
+        constructor(channel,volume,status) {
+            this._status = true;
+            this._channel = channel;
+            this._volume = volume;
+            this._status = status;
+        }
+
+        get channel() {
+            return this._channel;
+        }
+
+        set channel(value) {
+            this._channel = value;
+        }
+
+        get volume() {
+            return this._volume;
+        }
+
+        set volume(value) {
+            this._volume = value;
+        }
+
+        get status() {
+            return this._status;
+        }
+
+        set status(value) {
+            this._status = value;
+        }
+
+        changeChannel() {
+            return this._channel;
+        }
+        changeVolume() {
+            return this._volume;
+        }
+    }
+    class Remote {
+        constructor(TV) {
+            this._TV = TV;
+        }
+        changeChannel(value) {
+            this._TV.channel = value;
+            return this._channel;
+        }
+        volumeUp(value) {
+            this._TV.volume += value;
+        }
+        volumeDown(value) {
+            this._TV.volume -= value;
+        }
+    }
+    let LG = new Tivi(7,10,true);
+    let remote = new Remote(LG);
+    remote.changeChannel(3);
+    remote.volumeUp(2);
+    console.log(LG.channel);
+    console.log(LG.volume);
+</script>
+</body>
+</html>
